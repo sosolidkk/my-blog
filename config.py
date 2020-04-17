@@ -11,15 +11,15 @@ class Config(object):
     DEBUG = False
     TESTING = False
     CSRF_ENABLED = True
-    SECRET_KEY = os.environ.get("SECRET_KEY") or os.urandom(16)
+    SECRET_KEY = os.environ.get("SECRET_KEY") or os.urandom(32).hex()
 
     # Flask-WTF
-    WTF_CSRF_SECRET_KEY = os.environ.get("SECRET_KEY") or os.urandom(16)
+    WTF_CSRF_SECRET_KEY = os.environ.get("SECRET_KEY") or os.urandom(32).hex()
 
     # Flask-SQLAchemy
     SQLALCHEMY_DATABASE_URI = (
-        os.environ.get("DATABASE_URL")
-        or f"sqlite:///{os.path.join(basedir, 'temp/toy_db.db')}"
+        os.environ.get(
+            "DATABASE_URL") or f"sqlite:///{os.path.join(basedir, 'temp/db.db')}"
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
@@ -48,6 +48,6 @@ class TestingConfig(Config):
 
     # Flask-SQLAchemy
     SQLALCHEMY_DATABASE_URI = (
-        os.environ.get("DATABASE_URL")
-        or f"sqlite:///{os.path.join(basedir, 'temp/test_db.db')}"
+        os.environ.get(
+            "DATABASE_URL") or f"sqlite:///{os.path.join(basedir, 'temp/test_db.db')}"
     )

@@ -1,5 +1,17 @@
+"""app/__init__.py
+"""
+
 from flask import Flask
-from config import Config
+from flask_login import LoginManager
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+migrate = Migrate()
+
+login = LoginManager()
+login.login_view = "main.sign_in"
+login.login_message_category = "warning"
 
 
 def create_app(config_class=None):
@@ -14,10 +26,20 @@ def create_app(config_class=None):
 
 
 def init_apps(app):
-    pass
+    db.init_app(app)
+    login.init_app(app)
+    migrate.init_app(app, db)
+
+    from app.models import User
+
+    @login.user_loader
+    def load_user(user_id):
+        return User.query.filter(User.id == int(user_id)).first()
 
 
 def register_blueprints(app):
     from app.main import main_blueprint
+    from app.dashboard import dashboard_blueprint
 
     app.register_blueprint(main_blueprint)
+    app.register_blueprint(dashboard_blueprint)

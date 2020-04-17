@@ -1,20 +1,16 @@
 {% extends "base.html" %}
 
 {% block body %}
-<div class="c-wrapper">
-    <header class="c-header">
-        <!-- Header content here -->
-        <h2>Header here</h2>
-    </header>
-    <div class="c-body">
-        <main class="c-main">
-            <!-- Main content here -->
-            <h1>Main body here</h1>
-        </main>
+<div class="container-fluid">
+    <div class="row">
+        <div class="mt-5 ml-2 col-md-3">
+            {% include "sub_templates/_author.html" %}
+            {% include "sub_templates/_posts.html" %}
+
+        </div>
+        <div class="mt-5 col-md-5">
+            {% include "sub_templates/_current_post.html" %}
+        </div>
     </div>
-    <footer class="c-footer">
-        <!-- Footer content here -->
-        <h4>Footer here</h4>
-    </footer>
 </div>
 {% endblock %}

@@ -1,0 +1,9 @@
+<section class="post">
+    {% if current_post is not none %}
+    <small><a href="{{ url_for('main.index' ) }}">clear()</a></small>
+    <h1>{{ current_post.title }}</h1>
+    <p class="text-justify">
+        {{ current_post.body }}
+    </p>
+    {% endif %}
+</section>

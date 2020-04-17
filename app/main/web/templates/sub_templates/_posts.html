@@ -1,0 +1,16 @@
+<section class="posts">
+    <div>
+        <span class="font-weight-bold">POSTS</span>
+        <br>
+        {% for post in posts %}
+        <a href="{{ url_for('main.view_post', id=post.id) }}">
+            <small>
+                {{ post.title }}
+                <span class="text-muted">{{ post.parse_time()}}</span>
+            </small>
+
+        </a>
+        <br>
+        {% endfor %}
+    </div>
+</section>
