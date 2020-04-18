@@ -17,6 +17,7 @@ class User(UserMixin, db.Model):
         password (hashed using wekzeug.security)
         description of user (filled later on the dashboard)
         date that the user was created
+        last time user has logged in
     """
 
     __tablename__ = "user"
@@ -27,6 +28,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     about_me = db.Column(db.String(256))
     created_at = db.Column(db.DateTime, index=True, default=datetime.now)
+    last_seen = db.Column(db.DateTime, nullable=True)
     posts = db.relationship("Post", backref="author", lazy="dynamic")
 
     def __init__(self, username, email, password):
@@ -63,8 +65,9 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(128))
-    body = db.Column(db.String(32768))
+    body = db.Column(db.Text)
     created_at = db.Column(db.DateTime, index=True, default=datetime.now)
+    can_display = db.Column(db.Boolean, default=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
     def parse_time(self):
