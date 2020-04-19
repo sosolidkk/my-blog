@@ -1,43 +1,58 @@
 {% extends "base.html" %}
 
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('main.static', filename='css/form.css') }}"">
+{% endblock %}
+
 {% block body %}
-<h1>Sign In</h1>
-{% include "sub_templates/_flash.html" %}
+<div class=" card bg-light border-primary">
+<div class="card-header">
+    {% include "sub_templates/_flash.html" %}
+</div>
+<div class="card-body">
 
-<form action="" method="POST" class="text-left">
-    {{ form.hidden_tag() }}
-    <div class="form-group">
-        {{ form.username.label }}
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-user-circle" aria-hidden="true"></i></div>
+    <form action=" {{ url_for('main.sign_in') }}" role="form" method="POST" class="text-left">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.username.label }}
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-user-circle" aria-hidden="true"></i></div>
+                </div>
+                {{ form.username(class="form-control", placeholder="Username", size=32) }}
             </div>
-            {{ form.username(class="form-control", placeholder="Username", size=32) }}
+            {% for error in form.username.errors %}
+            <span class="badge badge-danger">{{ error }}</span>
+            {% endfor %}
         </div>
-        {% for error in form.username.errors %}
-        <span class="badge badge-danger">{{ error }}</span>
-        {% endfor %}
-    </div>
 
-    <div class="form-group">
-        {{ form.password.label }}
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></div>
+        <div class="form-group">
+            {{ form.password.label }}
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></div>
+                </div>
+                {{ form.password(class="form-control", placeholder="Password", size=32) }}
             </div>
-            {{ form.password(class="form-control", placeholder="Password", size=32) }}
+            {% for error in form.password.errors %}
+            <span class="badge badge-danger">{{ error }}</span>
+            {% endfor %}
         </div>
-        {% for error in form.password.errors %}
-        <span class="badge badge-danger">{{ error }}</span>
-        {% endfor %}
-    </div>
 
-    <div class="ml-4">
-        {{ form.remember_me(class="form-check-input") }} {{ form.remember_me.label() }}
-    </div>
+        <div class="ml-4">
+            {{ form.remember_me(class="form-check-input") }} {{ form.remember_me.label() }}
+        </div>
 
-    <div class="d-flex justify-content-center row">
-        {{ form.submit(class="btn btn-primary ml-2 mr-2 btn-block") }}
+        <div class="d-flex justify-content-center row mb-2">
+            {{ form.submit(class="btn ml-2 mr-2 btn-block") }}
+        </div>
+    </form>
+    <div class="card-text text-muted">
+        <small>
+            Lost your password? <a href="{{ url_for('main.recover_password') }}">Click here</a><br>
+            Go back to <a href="{{ url_for('main.index') }}">index page</a>
+        </small>
     </div>
-</form>
+</div>
+</div>
 {% endblock %}

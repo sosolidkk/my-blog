@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h4 class="mt-5">Ops</h4>
+            {
+            Trying to see some unavailable stuff?
+            <a href="{{ url_for('main.index') }}">Go back</a>
+            }
+        </div>
+    </div>
+</div>
+{% endblock %}

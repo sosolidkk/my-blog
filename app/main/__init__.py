@@ -4,7 +4,12 @@
 from flask import Blueprint
 
 main_blueprint = Blueprint(
-    "main", __name__, static_folder="web/static", template_folder="web/templates")
+    "main",
+    __name__,
+    static_url_path="",
+    static_folder="web/static",
+    template_folder="web/templates"
+)
 
 
 @main_blueprint.record

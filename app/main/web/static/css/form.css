@@ -1,0 +1,48 @@
+html,
+body {
+  height: 100%;
+  min-width: 360px;
+  min-height: 650px;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(-45deg, #0c0032, #190061, #3500d3, #282828);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+label {
+  color: #3500d3;
+  padding: 1px;
+}
+
+.input-group-text {
+  color: #ffffff !important;
+  background-color: #3500d3 !important;
+}
+
+.btn {
+  color: #ffffff;
+  background-color: #3500d3;
+}
+
+.btn:hover:enabled {
+  color: #ffffff;
+  background-color: #190061;
+  cursor: pointer;
+}

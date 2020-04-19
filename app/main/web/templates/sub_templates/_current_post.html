@@ -3,7 +3,7 @@
     <small><a href="{{ url_for('main.index' ) }}">clear()</a></small>
     <h1>{{ current_post.title }}</h1>
     <p class="text-justify">
-        {{ current_post.body }}
+        {{ current_post.body|safe }}
     </p>
     {% endif %}
 </section>

@@ -50,6 +50,12 @@ class User(UserMixin, db.Model):
         digest = md5(self.email.lower().encode("utf-8")).hexdigest()
         return f"https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}"
 
+    def parse_time(self, date):
+        result = str(date).split(".")[0]
+        _date, _time = result.split(" ")
+
+        return _date, _time
+
 
 class Post(db.Model):
     """
@@ -65,7 +71,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(128))
-    body = db.Column(db.Text)
+    body = db.Column(db.UnicodeText)
     created_at = db.Column(db.DateTime, index=True, default=datetime.now)
     can_display = db.Column(db.Boolean, default=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
@@ -78,3 +84,6 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"<Post: {self.title}>"
+
+    def __unicode__(self):
+        return self.title
