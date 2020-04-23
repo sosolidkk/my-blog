@@ -18,10 +18,10 @@ def create_app(config_class=None):
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_object(config_class)
 
-    # Initialization
     init_apps(app)
     register_blueprints(app)
     add_admin_views(admin, db)
+    add_error_views(app)
 
     return app
 
@@ -47,6 +47,13 @@ def add_admin_views(admin, db):
     from app.models import Post
 
     admin.add_view(PostModelView(Post, db.session))
+
+
+def add_error_views(app):
+    from app.error_views import page_not_found, internal_server_error
+
+    app.register_error_handler(404, page_not_found)
+    app.register_error_handler(500, internal_server_error)
 
 
 def register_blueprints(app):
