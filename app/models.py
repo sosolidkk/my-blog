@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(128), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     about_me = db.Column(db.String(256))
-    created_at = db.Column(db.DateTime, index=True, default=datetime.now)
+    created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     last_seen = db.Column(db.DateTime, nullable=True)
     posts = db.relationship("Post", backref="author", lazy="dynamic")
 
@@ -52,9 +52,9 @@ class User(UserMixin, db.Model):
 
     def parse_time(self, date):
         result = str(date).split(".")[0]
-        _date, _time = result.split(" ")
+        date, hour = result.split(" ")
 
-        return _date, _time
+        return date, hour
 
 
 class Post(db.Model):
@@ -72,15 +72,15 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(128))
     body = db.Column(db.UnicodeText)
-    created_at = db.Column(db.DateTime, index=True, default=datetime.now)
+    created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     can_display = db.Column(db.Boolean, default=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
     def parse_time(self):
         result = str(self.created_at).split(".")[0]
-        date, _ = result.split(" ")
+        date, hour = result.split(" ")
 
-        return date
+        return date, hour
 
     def __repr__(self):
         return f"<Post: {self.title}>"

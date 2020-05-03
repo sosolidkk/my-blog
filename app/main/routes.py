@@ -47,6 +47,11 @@ def sign_in():
     return render_template("sign_in.html", title="Sign in", form=form)
 
 
+@main_blueprint.route("/about-me")
+def about_me():
+    return render_template("about_me.html", title="About me / CV")
+
+
 @main_blueprint.route("/recover-password")
 def recover_password():
     flash("An email has been sent to you. Check your inbox", "warning")
@@ -55,7 +60,7 @@ def recover_password():
 
 @main_blueprint.route("/logout")
 def logout():
-    current_user.last_seen = datetime.now()
+    current_user.last_seen = datetime.utcnow()
     db.session.commit()
 
     logout_user()

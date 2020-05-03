@@ -1,0 +1,329 @@
+{% extends "base.html" %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('main.static', filename='css/about_me.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class=" container-fluid">
+
+    <!-- RESUME SECTION -->
+    <div id="resume">
+        <a href="{{ url_for('main.index') }}" class="badge badge-primary">Página inicial</a>
+        <div id="nameBlock" class="largeFont">
+            <span class="name">
+                João Pedro Chaves,
+            </span>
+            <span class="label">Desenvolvedor Backend</span>
+        </div>
+        <div class="smallFont">
+            <div class="contactBlock">
+                <span class="email">pedrochaveslimas3@gmail.com</span>
+                <span class="divider">|</span>
+                <span class="phone">(86) 99830-7660</span>
+                <span class="divider">|</span>
+                <span class="address">
+                    Teresina, Piauí, BR
+                </span>
+            </div>
+            <div id="profilesBlock">
+                <span class="url">
+                    <a href="https://github.com/sosolidkk">@sosolidkk</a>
+                </span>
+
+            </div>
+        </div>
+        <div class="sectionLine"></div>
+
+        <!-- SUMMARY SECTION -->
+        <div class="sectionBlock smallFont">
+            <div class="sectionName">
+                <span>RESUMO</span>
+            </div>
+            <div class="sectionContent">
+                <span>Programador backend Python que ama ouvir música nas horas vagas e passear por isekais (chineses em
+                    sua maioria). Projeta microsserviços, realiza scraping em sites, gosta
+                    de conhecer de tudo um pouco e está sempre disposto a experimentar e conhecer novas pessoas e
+                    tecnologias na interseção entre computação e o mundo real.</span>
+            </div>
+        </div>
+        <div class="sectionLine"></div>
+
+        <!-- WORK SECTION -->
+        <div class="sectionBlock smallFont">
+            <div class="sectionName">
+                <span>EXPERIÊNCIA</span>
+            </div>
+            <div class="sectionContent">
+                <div class="jobBlock">
+                    <div class="blockHeader">
+                        <span class="title">
+                            Maida.Health (Infoway), Estagiário
+                        </span>
+                        <span class="date">
+                            29/08/2019 - Hoje
+                        </span>
+                    </div>
+                    <div><a href="https://maida.health">https://maida.health</a></div>
+                    <ul class="highlights">
+                        <li>Maida.health é a empresa de tecnologia do sistema Hapvida que carrega o DNA combinado de
+                            duas grandes healthtechs: Infoway e Haptech. Nosso propósito é promover acesso à saúde por
+                            meio da inovação. Com responsabilidade, atitude de dono, atenção às pessoas e aprendizagem
+                            permanente, garantimos qualidade na execução e entrega. Temos compromisso com o resultado e
+                            seremos referência mundial em gestão e inovação em saúde.</li>
+                        <li>Meu trabalho consiste em desenvolver microsserviços e scripts de Scraping para sistemas web
+                            legados.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="sectionLine"></div>
+
+        <!-- PUBLICATIONS SECTION -->
+        <div class="sectionBlock smallFont">
+            <div class="sectionName">
+                <span>TRABALHOS</span>
+            </div>
+            <div class="sectionContent">
+                <div class="blockHeader">
+                    <span class="title">
+                        DropShot: um aplicativo para os entusiastas de tênis
+                    </span>
+                    <span class="date">
+                        01/08/2017 - 01/08/2018
+                    </span>
+                </div>
+                <ul class="highlights">
+                    <li>Aplicativo construído com Swift 4, utilizando Firebase como banco de dados.</li>
+                    <li>Permitia o usuário criar uma conta e gerenciar partidas de tênis, com características como
+                        número de sets, tipo de jogo, regras, etc.</li>
+                </ul>
+                <br>
+                <div class="blockHeader">
+                    <span class="title">
+                        MiD - Ferramenta para construção de middlewares para sistemas legados visando a interação com
+                        chatbots </span>
+                    <span class="date">
+                        01/08/2018 - 01/08/2020
+                    </span>
+                </div>
+                <ul class="highlights">
+                    <li>Mid é uma ferramenta que em conjunto com uma extensão do Chrome é capaz de mapear elementos de
+                        uma página Web para replicar uma possível funcionalidade de um usuário (Macro).</li>
+                </ul>
+            </div>
+        </div>
+        <div class="sectionLine"></div>
+
+        <!-- AWARDS SECTION -->
+        <div class="sectionBlock smallFont">
+            <div class="sectionName">
+                <span>PRÊMIOS</span>
+            </div>
+            <div class="sectionContent">
+                <div class="blockHeader">
+                    <span class="title">
+                        DropShot: um aplicativo para os entusiastas de tênis
+                    </span>
+                    <span class="date">
+                        06/11/2018 - 09/11/2018
+                    </span>
+                </div>
+                <ul class="highlights">
+                    <li> 2º Lugar na Área de
+                        Conhecimento, Tecnologia da Informação e Comunicação no X Seminário de Desenvolvimento
+                        Tecnológico e Inovação
+                        da Universidade Federal do Piauí – UFPI.</li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="sectionLine"></div>
+
+        <!-- EVENTS SECTION -->
+        <div class="sectionBlock smallFont">
+            <div class="sectionName">
+                <span>EVENTOS</span>
+            </div>
+            <div class="sectionContent">
+                <div class="blockHeader">
+                    <span class="title">Intro Dev - UFPI, Participante</span>
+                    <span class="date">
+                        28/09/2018
+                    </span>
+                </div>
+                <div class="blockHeader">
+                    <span class="title">Maratona de programação - UFPI, Organização</span>
+                    <span class="date">
+                        15/09/2018
+                    </span>
+                </div>
+                <div class="blockHeader">
+                    <span class="title">Intro Dev - UFPI, Participante</span>
+                    <span class="date">
+                        02/09/2018
+                    </span>
+                </div>
+                <div class="blockHeader">
+                    <span class="title">Maratona de programação - IFPI, Participante</span>
+                    <span class="date">
+                        09/09/2017
+                    </span>
+                    <ul class="highlights">
+                        <li>A Maratona de Programação é um evento da Sociedade Brasileira de Computação que existe desde
+                            o ano de 1996.</li>
+                    </ul>
+                </div>
+                <div class="blockHeader">
+                    <span class="title">Hackatruck - UFPI, Participante</span>
+                    <span class="date">
+                        24/04/2017 - 12/05/2017
+                    </span>
+                    <div><a href="https://hackatruck.com.br/">https://hackatruck.com.br/</a></div>
+                    <ul class="highlights">
+                        <li>Curso presencial de: Fundamentos e Práticas na Linguagem de Programação Swift.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="sectionLine"></div>
+
+        <!-- EDUCATION SECTION -->
+        <div class="sectionBlock smallFont">
+            <div class="sectionName">
+                <span>EDUCAÇÃO</span>
+            </div>
+            <div class="sectionContent">
+                <div class="educationBlock">
+                    <span class="title">
+                        Universidade Federal do Piauí
+                    </span>
+                    <span class="date">
+                        12/09/2016 - Hoje
+                    </span>
+                    <div>
+                        Bacharelado - Ciência da Computação
+                    </div>
+                    <!-- <div id="coursesBlock">
+                        <ul class="coursesList">
+                            <li class="course"></li>
+                            <li class="course"></li>
+                        </ul>
+                        <ul class="coursesList">
+                            <li class="course">/li>
+                        </ul>
+                    </div> -->
+                </div>
+                <br>
+                <div class="educationBlock">
+                    <span class="title">
+                        Instituto Federal de Ciência e Tecnologida do Maranhão - Campus Bacabal
+                    </span>
+                    <span class="date">
+                        2012 - 2014
+                    </span>
+                    <div>
+                        ​Técnico em Informática
+                    </div>
+                    <div>
+                        <ul class="coursesList">
+                            <li class="course">Programação Orientada a objetos - Java.</li>
+                            <li class="course">Estrutura de dados - C.</li>
+                        </ul>
+                        <ul class="coursesList">
+                            <li class="course">Introdução a Banco de Dados - SQL.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sectionLine"></div>
+
+        <!-- SKILLS SECTION -->
+        <div class="sectionBlock smallFont">
+            <div class="sectionName">
+                <span>HABILIDADES</span>
+            </div>
+            <div class="sectionContent">
+                <div class="skillBlock">
+                    <span class="title">Proficiência: </span>
+                    <span>Python</span>,
+                    <span>Flask</span>,
+                    <span>Scraping</span>,
+                    <span>Git</span>,
+                    <span>Unix</span>
+
+
+                </div>
+                <div class="skillBlock">
+                    <span class="title">Familiar: </span>
+                    <span>HTML5</span>,
+                    <span>CSS3</span>,
+                    <span>JavaScript</span>,
+                    <span>React</span>,
+                    <span>React Native</span>,
+                    <span>C</span>,
+                    <span>Java</span>,
+                    <span>SQL</span>
+                </div>
+            </div>
+        </div>
+        <div class="sectionLine"></div>
+
+        <!-- LANGUAGES SECTION -->
+        <div class="sectionBlock smallFont">
+            <div class="sectionName">
+                <span>IDIOMAS</span>
+            </div>
+            <div class="sectionContent">
+                <div class="skillBlock">
+                    <span class="language">Português (BR)</span>
+                    <span class="fluency"><em>(Lingua nativa)</em></span>
+                </div>
+                <div class="skillBlock">
+                    <span class="language">Inglês</span>
+                    <span class="fluency"><em>(Avançado)</em></span>
+                </div>
+                <div class="skillBlock">
+                    <span class="language">Espanhol</span>
+                    <span class="fluency"><em>(Básico)</em></span>
+                </div>
+            </div>
+        </div>
+        <div class="sectionLine"></div>
+
+        <!-- HOBBIES SECTION -->
+        <div class="sectionBlock smallFont">
+            <div class="sectionName">
+                <span>HOBBY(ies)</span>
+            </div>
+            <div class="sectionContent">
+                <div class="skillBlock">
+                    <span class="name">Games: RPGs</span>
+                    <span class="keywords"> <em>[ jRPGs, wRPGs, MMORPGs, All kinds of rpgs ]</em></span>
+                </div>
+                <div class="skillBlock">
+                    <span class="name">Games: Indies</span>
+                    <span class="keywords"> <em>[ Platformers, Action, Run&Gun, Rogue Like ]</em></span>
+                </div>
+                <div class="skillBlock">
+                    <span class="name">Books</span>
+                    <span class="keywords"> <em>[ Novels, Fiction, History ]</em></span>
+                </div>
+                <div class="skillBlock">
+                    <span class="name">Movies</span>
+                    <span class="keywords"> <em>[ Action, Old, Drama, Terror, Fiction ]</em></span>
+                </div>
+                <div class="skillBlock">
+                    <span class="name">Animes</span>
+                    <span class="keywords"> <em>[ <s>All</s> ]</em></span>
+                </div>
+                <div class="skillBlock">
+                    <span class="name">Music</span>
+                    <span class="keywords"> <em>[ SELECT * FROM music; ]</em></span>
+                </div>
+            </div>
+        </div>
+        <div class="sectionLine"></div>
+    </div>
+    {% endblock %}

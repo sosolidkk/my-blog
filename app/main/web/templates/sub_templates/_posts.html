@@ -6,7 +6,7 @@
         <a href="{{ url_for('main.view_post', id=post.id) }}">
             <small>
                 {{ post.title }}
-                <span class="text-muted">{{ post.parse_time()}}</span>
+                <span class="text-muted">{{ post.parse_time()[0]}}</span>
             </small>
 
         </a>
