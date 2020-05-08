@@ -23,6 +23,13 @@ class Config(object):
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    # Flask-Mail
+    MAIL_SERVER = "smtp-mail.outlook.com"
+    MAIL_PORT = 587  # TSL -> 587 | SSL 465
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = os.environ.get("MAIL_USERNAME", None)
+    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD", None)
+
 
 class ProductionConfig(Config):
     DEBUG = False

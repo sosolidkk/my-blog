@@ -2,12 +2,13 @@
 """
 
 from . import main_blueprint
-from .form import LoginForm
+from .form import LoginForm, RecoverPasswordForm
 from datetime import datetime
-from app import db
+from app import db, mail
 from app.models import User, Post
-from flask import flash, redirect, render_template, request, url_for
+from flask import current_app, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_user, logout_user
+from flask_mail import Message
 
 
 @main_blueprint.route("/")
@@ -47,15 +48,29 @@ def sign_in():
     return render_template("sign_in.html", title="Sign in", form=form)
 
 
+@main_blueprint.route("/recover-password", methods=["GET", "POST"])
+def recover_password():
+    form = RecoverPasswordForm()
+
+    if request.method == "POST":
+        if form.validate_on_submit():
+            with current_app.app_context():
+                msg = Message(
+                    subject="Recover password",
+                    sender=current_app.config.get("MAIL_USERNAME"),
+                    recipients=[form.email.data],
+                    body="This is a test body"
+                )
+                msg.send(mail)
+
+            flash("An email has been sent to you. Check your inbox", "warning")
+            return redirect(url_for("main.recover_password"))
+    return render_template("recover_password.html", title="Recover Password", form=form)
+
+
 @main_blueprint.route("/about-me")
 def about_me():
     return render_template("about_me.html", title="About me / CV")
-
-
-@main_blueprint.route("/recover-password")
-def recover_password():
-    flash("An email has been sent to you. Check your inbox", "warning")
-    return redirect(url_for("main.sign_in"))
 
 
 @main_blueprint.route("/logout")

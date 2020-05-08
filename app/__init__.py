@@ -4,12 +4,14 @@
 from flask import Flask
 from flask_admin import Admin
 from flask_login import LoginManager
+from flask_mail import Mail
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from app.admin_views import AdminModelView
 
 db = SQLAlchemy()
 login = LoginManager()
+mail = Mail()
 migrate = Migrate()
 admin = Admin(name="My blog", index_view=AdminModelView())
 
@@ -28,6 +30,7 @@ def create_app(config_class=None):
 
 def init_apps(app):
     db.init_app(app)
+    mail.init_app(app)
     migrate.init_app(app, db)
     admin.init_app(app)
 
