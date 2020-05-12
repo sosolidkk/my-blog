@@ -1,7 +1,6 @@
 <section class="post">
     {% if current_post is not none %}
     <a href="{{ url_for('main.index' ) }}" class="badge badge-danger">fechar</a>
-    <a href="#" class="badge badge-primary">comentários</a>
     <hr>
     <h1>{{ current_post.title }}</h1>
     <small class="text-muted text-right">{{ current_post.author }}</small><br>

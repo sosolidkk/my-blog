@@ -80,5 +80,5 @@ def logout():
 
     logout_user()
 
-    flash(f"Logout successful", "success")
+    flash("Logout successful", "success")
     return redirect(url_for("main.sign_in"))
