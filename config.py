@@ -17,10 +17,7 @@ class Config(object):
     WTF_CSRF_SECRET_KEY = os.environ.get("SECRET_KEY") or os.urandom(32).hex()
 
     # Flask-SQLAchemy
-    SQLALCHEMY_DATABASE_URI = (
-        os.environ.get(
-            "DATABASE_URL") or f"sqlite:///{os.path.join(basedir, 'temp/db.db')}"
-    )
+    SQLALCHEMY_DATABASE_URI = f"sqlite:///{os.path.join(basedir, 'data.db')}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Flask-Mail
@@ -54,7 +51,4 @@ class TestingConfig(Config):
     WTF_CSRF_ENABLED = False
 
     # Flask-SQLAchemy
-    SQLALCHEMY_DATABASE_URI = (
-        os.environ.get(
-            "DATABASE_URL") or f"sqlite:///{os.path.join(basedir, 'temp/test_db.db')}"
-    )
+    SQLALCHEMY_DATABASE_URI = f"sqlite:///{os.path.join(basedir, 'test_db.db')}"

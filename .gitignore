@@ -131,3 +131,4 @@ dmypy.json
 # Flask-SQLAchemy
 migrations/
 temp/
+*.db
