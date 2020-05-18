@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('main.static', filename='css/post.css') }}">
+{% endblock %}
+
 {% block body %}
 <div class="container-fluid">
     <div class="row">
