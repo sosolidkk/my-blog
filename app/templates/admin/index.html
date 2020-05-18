@@ -5,7 +5,7 @@
 <p>
     Last seen on:
     {% if current_user.last_seen %}
-    {{ current_user.parse_time(current_user.last_seen) }}
+    {{ current_user.parse_time() }}
     {% endif %}
 </p>
 <a href="{{ url_for('main.index') }}">Home</a>

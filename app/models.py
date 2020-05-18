@@ -50,9 +50,9 @@ class User(UserMixin, db.Model):
         digest = md5(self.email.lower().encode("utf-8")).hexdigest()
         return f"https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}"
 
-    def parse_time(self, date):
-        result = str(date).split(".")[0]
-        date, hour = result.split(" ")
+    def parse_time(self):
+        date = self.last_seen.strftime("%d/%m/%Y")
+        hour = self.last_seen.strftime("%H:%M:%S")
 
         return date, hour
 
@@ -77,8 +77,8 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
     def parse_time(self):
-        result = str(self.created_at).split(".")[0]
-        date, hour = result.split(" ")
+        date = self.created_at.strftime("%d/%m/%Y")
+        hour = self.created_at.strftime("%H:%M")
 
         return date, hour
 
