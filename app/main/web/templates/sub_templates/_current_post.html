@@ -1,10 +1,14 @@
 <section class="post">
     {% if current_post is not none %}
-    <a href="{{ url_for('main.index' ) }}" class="badge badge-danger">fechar</a>
-    <hr>
     <h1>{{ current_post.title }}</h1>
-    <small class="text-muted text-right">{{ current_post.author }}</small><br>
-    <small class="text-muted text-right">{{ current_post.parse_time() }} UTC</small>
+    <hr>
+    <small class="text-muted text-right">{{ current_post.author }} |</small>
+
+    <small class="text-muted text-right">
+        {{ current_post.parse_time()[0] }} - {{ current_post.parse_time()[1] }}
+        utc
+    </small>
+    <hr>
     <p>
         {{ current_post.body|safe }}
     </p>

@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block body %}
+<nav class="navbar navbar-light bg-light fixed-top rounded mt-2 mx-2">
+    {% if current_post is not none %}
+    <a href="{{ url_for('main.index' ) }}" class="badge badge-primary">fechar post</a>
+    {% endif %}
+</nav>
 <div class="container-fluid">
     <div class="row">
         <div class="mt-5 ml-2 col-md-3">
