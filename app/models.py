@@ -1,6 +1,9 @@
 """app/models.py
 """
 
+import math
+from collections import namedtuple
+
 from app import db
 from flask_login import UserMixin
 from datetime import datetime
@@ -77,10 +80,21 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
     def parse_time(self):
+        Date = namedtuple("Date", ["date", "hour"])
+
         date = self.created_at.strftime("%d/%m/%Y")
         hour = self.created_at.strftime("%H:%M")
 
-        return date, hour
+        return Date(date, hour)
+
+    def calculate_time_to_read(self):
+        Info = namedtuple("Info", ["time", "words"])
+        WPM = 275  # Average words per minute
+
+        words = self.body.split(" ")
+        estimated_time = len(words) / WPM
+
+        return Info(math.ceil(estimated_time), len(words))
 
     def __repr__(self):
         return f"<Post: {self.title}>"

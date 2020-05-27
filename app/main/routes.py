@@ -23,9 +23,13 @@ def view_post(id):
     posts = Post.query.filter_by(can_display=True).order_by(
         Post.created_at.desc()).all()
     post = Post.query.filter_by(id=id, can_display=True).first()
+    post_time = post.parse_time()
+    post_info = post.calculate_time_to_read()
 
     if post is not None:
-        return render_template("index.html", title="My blog", posts=posts, current_post=post)
+        return render_template(
+            "index.html", title="My blog", posts=posts, current_post=post, post_time=post_time, post_info=post_info
+        )
     return render_template("unavailable.html", title="Unavailable")
 
 

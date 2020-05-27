@@ -1,14 +1,12 @@
 <section class="post">
     {% if current_post is not none %}
     <h1>{{ current_post.title }}</h1>
-    <hr>
-    <small class="text-muted text-right">{{ current_post.author }} |</small>
-
+    <small class="text-muted text-right">{{ current_post.author }} | </small>
     <small class="text-muted text-right">
-        {{ current_post.parse_time()[0] }} - {{ current_post.parse_time()[1] }}
-        utc
+        {{ post_time.date }} {{ post_time.hour }} |
     </small>
-    <hr>
+    <small class="text-muted">{{ post_info.time }} min read |</small>
+    <small class="text-muted">{{ post_info.words }} words</small>
     <p>
         {{ current_post.body|safe }}
     </p>
