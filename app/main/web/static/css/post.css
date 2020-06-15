@@ -18,3 +18,20 @@ blockquote:before {
 blockquote p {
     display: inline;
 }
+
+.btn-primary {
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+    position: fixed;
+    display: none;
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    bottom: 10px;
+    right: 20px;
+    z-index: 99;
+    border-radius: 50%;
+}

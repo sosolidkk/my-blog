@@ -23,3 +23,7 @@
     </div>
 </div>
 {% endblock %}
+
+{% block script %}
+<script src="{{ url_for('main.static', filename='js/current_post.js') }}"></script>
+{% endblock %}
