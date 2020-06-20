@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('main.static', filename='css/post.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-7 mx-auto">
+            <section class="post">
+                {% if current_post is not none %}
+                <a href="{{ url_for('main.index' ) }}" class="badge badge-primary">index</a>
+                <h1>{{ current_post.title }}</h1>
+                <small class="text-muted text-right">{{ current_post.author }} | </small>
+                <small class="text-muted text-right">
+                    {{ post_time.date }} {{ post_time.hour }} |
+                </small>
+                <small class="text-muted">{{ post_info.time }} min read |</small>
+                <small class="text-muted">{{ post_info.words }} words</small>
+                <p>
+                    {{ current_post.body|safe }}
+                </p>
+                <button class="btn btn-primary btnTop" onclick="scrollBackTop()">
+                    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                </button>
+                {% endif %}
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('main.static', filename='js/current_post.js') }}"></script>
+{% endblock %}

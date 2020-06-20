@@ -20,15 +20,14 @@ def index():
 
 @main_blueprint.route("/view-post/<int:id>")
 def view_post(id):
-    posts = Post.query.filter_by(can_display=True).order_by(
-        Post.created_at.desc()).all()
     post = Post.query.filter_by(id=id, can_display=True).first()
-    post_time = post.parse_time()
-    post_info = post.calculate_time_to_read()
 
     if post is not None:
+        post_time = post.parse_time()
+        post_info = post.calculate_time_to_read()
+
         return render_template(
-            "index.html", title="My blog", posts=posts, current_post=post, post_time=post_time, post_info=post_info
+            "current_post.html", title="My blog", current_post=post, post_time=post_time, post_info=post_info
         )
     return render_template("unavailable.html", title="Unavailable")
 
