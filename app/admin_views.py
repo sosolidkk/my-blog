@@ -39,9 +39,7 @@ class PostModelView(ModelView):
     column_editable_list = ["title", "can_display"]
 
     extra_js = ["//cdn.ckeditor.com/4.14.0/full/ckeditor.js"]
-    form_overrides = {
-        "body": CKTextAreaField
-    }
+    form_overrides = {"body": CKTextAreaField}
 
     def is_accessible(self):
         return current_user.is_authenticated

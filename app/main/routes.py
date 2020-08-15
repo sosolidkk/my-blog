@@ -1,21 +1,27 @@
 """main/routes.py
 """
 
-from . import main_blueprint
-from .form import LoginForm, RecoverPasswordForm
 from datetime import datetime
-from app import db, mail
-from app.models import User, Post
+
 from flask import current_app, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_user, logout_user
 from flask_mail import Message
 
+from app import db, mail
+from app.models import Post, User
+
+from . import main_blueprint
+from .form import LoginForm, RecoverPasswordForm
+
 
 @main_blueprint.route("/")
 def index():
-    posts = Post.query.filter_by(can_display=True).order_by(
-        Post.created_at.desc()).all()
-    return render_template("index.html", title="My blog", posts=posts, current_post=None)
+    posts = (
+        Post.query.filter_by(can_display=True).order_by(Post.created_at.desc()).all()
+    )
+    return render_template(
+        "index.html", title="My blog", posts=posts, current_post=None
+    )
 
 
 @main_blueprint.route("/view-post/<int:id>")
@@ -27,7 +33,11 @@ def view_post(id):
         post_info = post.calculate_time_to_read()
 
         return render_template(
-            "current_post.html", title="My blog", current_post=post, post_time=post_time, post_info=post_info
+            "current_post.html",
+            title="My blog",
+            current_post=post,
+            post_time=post_time,
+            post_info=post_info,
         )
     return render_template("unavailable.html", title="Unavailable")
 
@@ -62,7 +72,7 @@ def recover_password():
                     subject="Recover password",
                     sender=current_app.config.get("MAIL_USERNAME"),
                     recipients=[form.email.data],
-                    body="This is a test body"
+                    body="This is a test body",
                 )
                 msg.send(mail)
 
